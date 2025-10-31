@@ -1,0 +1,3 @@
+[submodule "clothoids"]
+	path = clothoids
+	url = git@github.com:ebertolazzi/Clothoids
