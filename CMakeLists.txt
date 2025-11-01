@@ -47,6 +47,7 @@ add_library(
   clothoids/submodules/UtilsLite/src/Trace.cc
   clothoids/submodules/UtilsLite/src/Console.cc
   clothoids/submodules/UtilsLite/src/Utils_AABB_tree.cc
+	clothoids/submodules/UtilsLite/src/Utils_AlgoBracket.cc
   clothoids/submodules/UtilsLite/src/Utils/3rd/format.cxx
   clothoids/submodules/UtilsLite/src/Utils/3rd/os.cxx
 )
