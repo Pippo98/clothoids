@@ -1,3 +1,6 @@
 [submodule "clothoids"]
 	path = clothoids
 	url = git@github.com:ebertolazzi/Clothoids
+[submodule "pipal"]
+	path = pipal
+	url = git@github.com:stoccodavide/pipal

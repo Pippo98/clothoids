@@ -1,16 +1,5 @@
 set(CDIR  ${CMAKE_CURRENT_LIST_DIR})
 
-
-include(FetchContent)
-set(FETCHCONTENT_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib3rd/PIPAL")
-FetchContent_Declare(
-  PIPAL
-  GIT_REPOSITORY https://github.com/ebertolazzi/PIPAL.git
-  GIT_SHALLOW TRUE
-  GIT_TAG enrico
-)
-FetchContent_MakeAvailable(PIPAL)
-
 file(
   GLOB 
   clothoids_main_headers
@@ -62,6 +51,7 @@ add_library(
   clothoids/submodules/UtilsLite/src/Utils_AABB_tree.cc
 	clothoids/submodules/UtilsLite/src/Utils_AlgoBracket.cc
 )
+add_subdirectory(pipal)
 target_include_directories(clothoids
     PUBLIC
     $<BUILD_INTERFACE:${CDIR}/clothoids/src>
@@ -71,7 +61,7 @@ target_include_directories(clothoids
 		$<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/ThirdParties/Eigen/eigen-5.0.0/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/GenericContainer/include/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/lib3rd/include/>
-		$<BUILD_INTERFACE:${CDIR}/lib3rd/PIPAL/pipal-src/include/>
+		$<BUILD_INTERFACE:${CDIR}/pipal/include/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/quarticRootsFlocke/src/>
     $<INSTALL_INTERFACE:inc>
 )
