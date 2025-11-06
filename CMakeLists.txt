@@ -68,6 +68,7 @@ target_include_directories(clothoids
     $<BUILD_INTERFACE:${CDIR}/clothoids/src/Clothoids>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/src>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/src/Utils>
+		$<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/ThirdParties/Eigen/eigen-5.0.0/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/GenericContainer/include/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/lib3rd/include/>
 		$<BUILD_INTERFACE:${CDIR}/lib3rd/PIPAL/pipal-src/include/>
