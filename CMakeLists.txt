@@ -1,5 +1,7 @@
 set(CDIR  ${CMAKE_CURRENT_LIST_DIR})
 
+add_subdirectory(eigen)
+
 file(
   GLOB 
   clothoids_main_headers
@@ -51,7 +53,13 @@ add_library(
   clothoids/submodules/UtilsLite/src/Utils_AABB_tree.cc
 	clothoids/submodules/UtilsLite/src/Utils_AlgoBracket.cc
 )
+set(PIPAL_EIGEN_EXTERNAL ON CACHE BOOL "Use external Eigen3 for Pipal")
 add_subdirectory(pipal)
+target_link_libraries(clothoids
+	PUBLIC
+		Eigen3::Eigen
+)
+
 target_include_directories(clothoids
     PUBLIC
     $<BUILD_INTERFACE:${CDIR}/clothoids/src>
