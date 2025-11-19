@@ -33,6 +33,7 @@ add_library(
   clothoids/src/ClothoidList.cc
   clothoids/src/ClothoidListG2.cc
   clothoids/src/ClothoidListG2_P1P2.cc
+	clothoids/src/ClothoidList_LBFGS.cc
   clothoids/src/Dubins3p.cc
   clothoids/src/Dubins3p_ellipse.cc
   clothoids/src/Dubins3p_pattern.cc
