@@ -31,9 +31,9 @@ add_library(
   clothoids/src/ClothoidDistance.cc
   clothoids/src/ClothoidG2.cc
   clothoids/src/ClothoidList.cc
-  # clothoids/src/ClothoidListG2.cc
-  # clothoids/src/ClothoidListG2_P1P2.cc
-  # clothoids/src/ClothoidList_LBFGS.cc
+  clothoids/src/ClothoidListG2.cc
+  clothoids/src/ClothoidListG2_P1P2.cc
+  clothoids/src/ClothoidList_LBFGS.cc
   clothoids/src/Dubins3p.cc
   clothoids/src/Dubins3p_ellipse.cc
   clothoids/src/Dubins3p_pattern.cc
@@ -50,7 +50,7 @@ add_library(
   clothoids/submodules/UtilsLite/src/Utils.cc
   clothoids/submodules/UtilsLite/src/Malloc.cc
   clothoids/submodules/UtilsLite/src/Console.cc
-  # clothoids/submodules/UtilsLite/src/Utils_Trace.cc
+  clothoids/submodules/UtilsLite/src/Utils_Trace.cc
   clothoids/submodules/UtilsLite/src/Utils_AABB_tree.cc
   clothoids/submodules/UtilsLite/src/Utils_AlgoBracket.cc
 )
