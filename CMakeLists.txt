@@ -46,19 +46,12 @@ add_library(
   clothoids/src/Triangle2D.cc
 
   ${sub_sources}
-
-  clothoids/submodules/UtilsLite/src/Utils.cc
-  clothoids/submodules/UtilsLite/src/Malloc.cc
-  clothoids/submodules/UtilsLite/src/Console.cc
-  clothoids/submodules/UtilsLite/src/Utils_Trace.cc
-  clothoids/submodules/UtilsLite/src/Utils_AABB_tree.cc
-  clothoids/submodules/UtilsLite/src/Utils_AlgoBracket.cc
 )
 set(PIPAL_EIGEN_EXTERNAL ON CACHE BOOL "Use external Eigen3 for Pipal")
 add_subdirectory(pipal)
 target_link_libraries(clothoids
-	PUBLIC
-		Eigen3::Eigen
+  PUBLIC
+  Eigen3::Eigen
 )
 
 target_include_directories(clothoids
@@ -67,10 +60,10 @@ target_include_directories(clothoids
     $<BUILD_INTERFACE:${CDIR}/clothoids/src/Clothoids>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/src>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/src/Utils>
-		$<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/ThirdParties/Eigen/eigen-5.0.0/>
+    $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/ThirdParties/Eigen/eigen-5.0.0/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/GenericContainer/include/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/lib3rd/include/>
-		$<BUILD_INTERFACE:${CDIR}/pipal/include/>
+    $<BUILD_INTERFACE:${CDIR}/pipal/include/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/quarticRootsFlocke/src/>
     $<INSTALL_INTERFACE:inc>
 )
