@@ -1,7 +1,21 @@
+cmake_minimum_required(VERSION 3.40)
+project(clothoids)
+
+set(CLOTHIDS_LIB_TYPE STATIC)
+if(SET_CLOTHOIDS_LIB_TYPE)
+  set(CLOTHIDS_LIB_TYPE ${SET_CLOTHOID_LIB_TYPE})
+endif()
+
 set(CDIR  ${CMAKE_CURRENT_LIST_DIR})
 
+# ================================= #
 add_subdirectory(eigen)
 
+# ================================= #
+set(PIPAL_EIGEN_EXTERNAL ON CACHE BOOL "Use external Eigen3 for Pipal")
+add_subdirectory(pipal)
+
+# ================================= #
 file(
   GLOB 
   clothoids_main_headers
@@ -13,6 +27,9 @@ file(
   sub_sources
   clothoids/submodules/quarticRootsFlocke/src/*.cc
   clothoids/submodules/GenericContainer/src/*.cc
+  clothoids/submodules/GenericContainer/src_json_interface/*.cc
+  clothoids/submodules/GenericContainer/src_toml_interface/*.cc
+  clothoids/submodules/GenericContainer/src_yaml_interface/*.cc
 )
 file(
   GLOB
@@ -20,9 +37,10 @@ file(
   clothoids/submodules/UtilsLite/src/*.hh
 )
 
+# ================================= #
 add_library(
   clothoids
-  STATIC
+  ${CLOTHIDS_LIB_TYPE}
   clothoids/src/BBox.cc
   clothoids/src/Biarc.cc
   clothoids/src/BiarcList.cc
@@ -47,13 +65,11 @@ add_library(
 
   ${sub_sources}
 )
-set(PIPAL_EIGEN_EXTERNAL ON CACHE BOOL "Use external Eigen3 for Pipal")
-add_subdirectory(pipal)
 target_link_libraries(clothoids
   PUBLIC
   Eigen3::Eigen
+  Pipal
 )
-
 target_include_directories(clothoids
     PUBLIC
     $<BUILD_INTERFACE:${CDIR}/clothoids/src>
@@ -62,6 +78,7 @@ target_include_directories(clothoids
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/src/Utils>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/UtilsLite/ThirdParties/Eigen/eigen-5.0.0/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/GenericContainer/include/>
+    $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/GenericContainer/src_yaml_interface/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/lib3rd/include/>
     $<BUILD_INTERFACE:${CDIR}/pipal/include/>
     $<BUILD_INTERFACE:${CDIR}/clothoids/submodules/quarticRootsFlocke/src/>
@@ -71,4 +88,5 @@ target_compile_options(
   clothoids
   PRIVATE
   -w
+  -std=c++17
 )
