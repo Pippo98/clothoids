@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.40)
 project(clothoids)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(CLOTHIDS_LIB_TYPE STATIC)
 if(SET_CLOTHOIDS_LIB_TYPE)
   set(CLOTHIDS_LIB_TYPE ${SET_CLOTHOID_LIB_TYPE})
@@ -90,3 +92,5 @@ target_compile_options(
   -w
   -std=c++17
 )
+
+add_subdirectory(bindings)
