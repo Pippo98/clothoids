@@ -11,7 +11,9 @@ endif()
 set(CDIR  ${CMAKE_CURRENT_LIST_DIR})
 
 # ================================= #
+if(NOT CLOTHOIDS_EXTERNAL_EIGEN)
 add_subdirectory(eigen)
+endif()
 
 # ================================= #
 set(PIPAL_EIGEN_EXTERNAL ON CACHE BOOL "Use external Eigen3 for Pipal")
