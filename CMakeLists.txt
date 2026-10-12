@@ -3,12 +3,26 @@ project(clothoids)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+option(CLOTHOIDS_BUILD_PYTHON_BINDINGS "Build the py_clothoids Python module" OFF)
+
 set(CLOTHIDS_LIB_TYPE STATIC)
-if(SET_CLOTHOIDS_LIB_TYPE)
+if(SET_CLOTHOID_LIB_TYPE)
   set(CLOTHIDS_LIB_TYPE ${SET_CLOTHOID_LIB_TYPE})
 endif()
 
+# The static library is linked into the Python module, which is a shared object
+if(CLOTHOIDS_BUILD_PYTHON_BINDINGS)
+  set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
+
 set(CDIR  ${CMAKE_CURRENT_LIST_DIR})
+
+if(NOT EXISTS ${CDIR}/clothoids/src/Clothoids.hh
+   OR NOT EXISTS ${CDIR}/clothoids/submodules/UtilsLite/src/Utils.hh
+   OR NOT EXISTS ${CDIR}/pipal/CMakeLists.txt)
+  message(FATAL_ERROR
+    "Git submodules are missing, run: git submodule update --init --recursive")
+endif()
 
 # ================================= #
 if(NOT CLOTHOIDS_EXTERNAL_EIGEN)
@@ -18,6 +32,9 @@ endif()
 # ================================= #
 set(PIPAL_EIGEN_EXTERNAL ON CACHE BOOL "Use external Eigen3 for Pipal")
 add_subdirectory(pipal)
+# Pipal propagates -Wall -Wextra -pedantic -Werror to every target linking it,
+# which makes third party headers fail to compile
+set_property(TARGET Pipal PROPERTY INTERFACE_COMPILE_OPTIONS "")
 
 # ================================= #
 file(

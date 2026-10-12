@@ -1,0 +1,54 @@
+[build-system]
+requires = ["scikit-build-core>=0.10"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "py-clothoids"
+version = "0.1.0"
+description = "Python bindings for Enrico Bertolazzi's Clothoids library"
+readme = "readme.md"
+requires-python = ">=3.8"
+authors = [{ name = "Filippo Faccini" }]
+classifiers = [
+  "Programming Language :: C++",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Homepage = "https://github.com/Pippo98/clothoids"
+Upstream = "https://github.com/ebertolazzi/Clothoids"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build/{wheel_tag}"
+wheel.packages = []
+sdist.exclude = [
+  ".git",
+  "**/.git",
+  "build",
+  "eigen/doc",
+  "eigen/test",
+  "eigen/unsupported/test",
+  "eigen/bench",
+  "eigen/demos",
+  "clothoids/docs",
+  "clothoids/doc_generate",
+  "clothoids/toolbox",
+  "clothoids/maple",
+  "clothoids/src_tests",
+  "clothoids/*.pdf",
+  "clothoids/*.png",
+  "clothoids/*.jpeg",
+  "clothoids/submodules/*/docs",
+  "clothoids/submodules/*/doxygen",
+  "clothoids/submodules/*/examples",
+  "clothoids/submodules/*/src_tests",
+  "clothoids/submodules/*/matlab_tests",
+  "pipal/docs",
+  "bindings/py/pybind11/docs",
+  "bindings/py/pybind11/tests",
+]
+
+[tool.scikit-build.cmake.define]
+CLOTHOIDS_BUILD_PYTHON_BINDINGS = "ON"

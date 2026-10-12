@@ -96,7 +96,7 @@ const auto closest_point_in_s_range_ISO =
 
 PYBIND11_MODULE(py_clothoids, m) {
   m.doc() =
-      "TireX Python Bindings. This module provides access to the TireX "
+      "Clothoids Python Bindings. This module provides access to the Clothoids "
       "library. It is wrapping the C++ classes and functions using pybind11.";
   py::class_<CL>(m, "ClothoidList")
       .def(py::init<std::string>())

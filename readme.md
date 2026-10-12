@@ -9,6 +9,26 @@ This repository uses git submodules to keep always a stable version.
 git clone --recurse-submodules https://github.com/Pippo98/clothoids
 ```
 
+## Install the Python bindings with pip
+Directly from GitHub (pip fetches the submodules on its own):
+```bash
+pip install git+https://github.com/Pippo98/clothoids
+```
+
+Or from a local clone (cloned with `--recurse-submodules`):
+```bash
+pip install .
+```
+
+A C++17 compiler is required; CMake is downloaded automatically if the installed one is too old.
+```python
+import py_clothoids
+
+cl = py_clothoids.ClothoidList("my_curve")
+cl.build_G1(4, [0, 1, 2, 3], [0, 1, 0, 1])
+print(cl.length(), cl.evaluate(0.5))
+```
+
 ## Compile this single project
 ```
 cmake -B build
