@@ -22,7 +22,9 @@ Upstream = "https://github.com/ebertolazzi/Clothoids"
 [tool.scikit-build]
 minimum-version = "build-system.requires"
 build-dir = "build/{wheel_tag}"
-wheel.packages = []
+wheel.packages = ["bindings/py/py_clothoids"]
+# Only install the Python module, not the Eigen/Pipal headers
+install.components = ["python"]
 sdist.exclude = [
   ".git",
   "**/.git",

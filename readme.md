@@ -25,8 +25,17 @@ A C++17 compiler is required; CMake is downloaded automatically if the installed
 import py_clothoids
 
 cl = py_clothoids.ClothoidList("my_curve")
-cl.build_G1(4, [0, 1, 2, 3], [0, 1, 0, 1])
-print(cl.length(), cl.evaluate(0.5))
+cl.build_G1(n=4, x=[0, 1, 2, 3], y=[0, 1, 0, 1])
+print(cl.length())
+
+r = cl.evaluate(s=0.5)  # EvalResult(th=..., k=..., x=..., y=...)
+th, k, x, y = r         # results can also be unpacked like tuples
+```
+
+The package ships type stubs (`py_clothoids/_core.pyi`), so IDEs autocomplete methods, argument names and documentation.
+After changing `bindings/py/bindings.cpp`, regenerate and commit them with:
+```bash
+bindings/py/generate_stubs.sh
 ```
 
 ## Compile this single project
